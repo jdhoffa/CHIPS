@@ -28,13 +28,21 @@ from sklearn import svm, metrics
 
 # Note: This is a toy problem, and should be very easy as each image is perfectly identical. Once this runs smoothly, we will tackle the more difficult problem of analyzing imperfect data and finally physical images of real chess boards.
 
-# Load training data
+# Load one training example
 
 train1 = matplotlib.pyplot.imread('../fen_diagrams/train1.png')
+print(train1)
+
+# Note: This returns a Numpy array of size (240,240,4), 240x240 pixels with 4 colour elements (RGB and a transparency layer, I think?)
+
+# Here, we will load all N training examples into a (N,240,240,4) numpy array:
+a = []
 
 for filename in os.listdir('../fen_diagrams/'):
     if filename.endswith(".png"):
-        a = matplotlib.pyplot.imread('../fen_diagrams/'+filename)
+        a.append(matplotlib.pyplot.imread('../fen_diagrams/'+filename))
         continue
     else:
         continue
+
+dataset = np.stack(a)
