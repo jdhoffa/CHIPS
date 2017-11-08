@@ -6,7 +6,9 @@
 
 [Handwritten Digit Recognition Tutorial](http://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html)
 
-[FEN Diagram generator](http://www.chessvideos.tv/chess-diagram-generator.php)
+[FEN Diagram Generator](http://www.chessvideos.tv/chess-diagram-generator.php)
+
+[Sliding Windows](https://www.coursera.org/learn/machine-learning/lecture/bQhq3/sliding-windows)
 
 ## Content
 
