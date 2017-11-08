@@ -1,1 +1,1 @@
-''' temporary library of all function definition '''
+''' function definitions module '''
