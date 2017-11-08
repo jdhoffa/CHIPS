@@ -1,6 +1,13 @@
 # CHIPS
 **CHess Integrated Prediction Software**
 
+## Useful links
+[Scitkit Learn](http://scikit-learn.org/stable/)
+
+[Handwritten Digit Recognition Tutorial](http://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html)
+
+[FEN Diagram generator](http://www.chessvideos.tv/chess-diagram-generator.php)
+
 ## Content 
 
 **./docs/**: Documentation </br>
