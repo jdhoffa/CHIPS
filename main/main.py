@@ -46,3 +46,13 @@ for filename in os.listdir('../fen_diagrams/'):
         continue
 
 dataset = np.stack(a)
+
+# Plot a subset of the training examples
+Nplots = 2 # how many to plot?
+
+for i in range(0,Nplots):
+    plt.figure(figsize=(Nplots*5, Nplots*5))
+    plt.subplot(Nplots,Nplots,i+1)
+    plt.axis('off')
+    plt.imshow(dataset[i], cmap=plt.cm.gray_r, interpolation='nearest')
+    plt.title('Training example: %i' % (i+1))
