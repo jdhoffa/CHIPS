@@ -1,7 +1,14 @@
-#CHIPS
-CHess Integrated Prediction Software
+# CHIPS
+**CHess Integrated Prediction Software**
 
-## content 
+## Content 
 
-**./main/**: main code </br>
+**./docs/**: Documentation </br>
 **./fen_diagrams/**: FEN diagram data </br>
+**./main/**: main source code and module definitions </br>
+**./tests/**: test suite </br>
+
+## Authors
+
+Bryce Walter Parker </br>
+Jackson Hoffart 
