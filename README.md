@@ -1,5 +1,4 @@
-#CHIPS
-
+# CHIPS
 **CHess Integrated Prediction Software**
 
 ## Content 
