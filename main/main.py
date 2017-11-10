@@ -56,3 +56,43 @@ for i in range(0,Nplots):
     plt.axis('off')
     plt.imshow(dataset[i], cmap=plt.cm.gray_r, interpolation='nearest')
     plt.title('Training example: %i' % (i+1))
+    
+    
+# Piece Key: 0,1,2,3,4,5,6 = empty, pawn, rook, knight, bishop, queen, king
+
+train1_validate=np.array((2,1,0,0,0,0,1,2, \
+                          3,1,0,0,0,0,1,3, \
+                          4,1,0,0,0,0,1,4, \
+                          5,1,0,0,0,0,1,5, \
+                          6,1,0,0,0,0,1,6, \
+                          4,1,0,0,0,0,1,4, \
+                          3,1,0,0,0,0,1,3, \
+                          2,1,0,0,0,0,1,2))
+
+temp = []
+
+for i in range(0, dataset.shape[0]):
+    columns = np.stack(np.split(dataset[i],8,axis=0))
+    squares = np.stack(np.split(columns,8,axis=2))
+    reshape = squares.reshape(64,900*4)
+    temp.append(reshape)
+
+dataset_flat = np.stack(temp)
+
+# Create a classifier: a support vector classifier
+classifier = svm.SVC(gamma=0.01, verbose=True)
+# Gamma is a hyperparameter :D
+
+# We learn the digits on the first half of the digits
+n_samples = dataset.shape[0]
+
+classifier.fit(dataset_flat[0], train1_validate)
+
+#Prediction of first example (image 1 of scotch open seq.)
+predicted = classifier.predict(dataset_flat[1])
+
+#Print predicted board in original left to right chessboard format (e.g. train1_validate)
+for i in range(0,len(predicted)):
+    if (i+1)%8==0:
+        print predicted[i-7:i+1]
+    
