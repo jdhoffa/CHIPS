@@ -9,12 +9,13 @@
 
 ''' import some cheeky modules '''
 # standard modules
+import os
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-%matplotlib inline
+# %matplotlib inline
 
 # scikit-learn support vector machines (classifier) and performance metrics
 from sklearn import svm, metrics
