@@ -77,6 +77,7 @@ for i in range(0, dataset.shape[0]):
     reshape = squares.reshape(64,900*4)
     temp.append(reshape)
 
+#Flat stanley!
 dataset_flat = np.stack(temp)
 
 # Create a classifier: a support vector classifier
@@ -95,4 +96,5 @@ predicted = classifier.predict(dataset_flat[1])
 for i in range(0,len(predicted)):
     if (i+1)%8==0:
         print predicted[i-7:i+1]
-    
+
+        
