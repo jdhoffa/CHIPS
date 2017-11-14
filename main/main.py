@@ -13,8 +13,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-
-%matplotlib inline
+import os
 
 # scikit-learn support vector machines (classifier) and performance metrics
 from sklearn import svm, metrics
@@ -28,10 +27,7 @@ from sklearn import svm, metrics
 
 # Note: This is a toy problem, and should be very easy as each image is perfectly identical. Once this runs smoothly, we will tackle the more difficult problem of analyzing imperfect data and finally physical images of real chess boards.
 
-# Load one training example
-
-train1 = matplotlib.pyplot.imread('../fen_diagrams/train1.png')
-print(train1)
+print ("---> We begin by loading in .PNGs of FEN diagrams (depicting the Scotch opening). Each diagram is 240x240 pixels, with 8x8 spaces (so 30x30 pixels per space). ")
 
 # Note: This returns a Numpy array of size (240,240,4), 240x240 pixels with 4 colour elements (RGB and a transparency layer, I think?)
 
@@ -48,7 +44,8 @@ for filename in os.listdir('../fen_diagrams/'):
 dataset = np.stack(a)
 
 # Plot a subset of the training examples
-Nplots = 2 # how many to plot?
+
+Nplots = int(raw_input("How many of the training examples would you like to see?"))
 
 for i in range(0,Nplots):
     plt.figure(figsize=(Nplots*5, Nplots*5))
@@ -56,8 +53,11 @@ for i in range(0,Nplots):
     plt.axis('off')
     plt.imshow(dataset[i], cmap=plt.cm.gray_r, interpolation='nearest')
     plt.title('Training example: %i' % (i+1))
-    
-    
+plt.show()
+
+raw_input("Press Enter to continue...")
+
+print("We will now train the SVM classifier on the first 4 training examples")
 # Piece Key: 0,1,2,3,4,5,6 = empty, pawn, rook, knight, bishop, queen, king
 
 train1_validate=np.array((2,1,0,0,0,0,1,2, \
@@ -81,7 +81,7 @@ for i in range(0, dataset.shape[0]):
 dataset_flat = np.stack(temp)
 
 # Create a classifier: a support vector classifier
-classifier = svm.SVC(gamma=0.01, verbose=True)
+classifier = svm.SVC(gamma=0.01, verbose=False)
 # Gamma is a hyperparameter :D
 
 # We learn the digits on the first half of the digits
@@ -93,8 +93,16 @@ classifier.fit(dataset_flat[0], train1_validate)
 predicted = classifier.predict(dataset_flat[1])
 
 #Print predicted board in original left to right chessboard format (e.g. train1_validate)
+
+# plt.figure(figsize=(1, 1)
+# # plt.subplot(1,1,1)
+# # plt.axis('off')
+# plt.imshow(dataset[1], cmap=plt.cm.gray_r, interpolation='nearest')
+# plt.title('True values: %i' % (i+1))
+
+print("The predicted values are:")
 for i in range(0,len(predicted)):
     if (i+1)%8==0:
         print predicted[i-7:i+1]
 
-        
+raw_input("Press enter to continue...")
